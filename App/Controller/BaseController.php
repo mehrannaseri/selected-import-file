@@ -10,6 +10,7 @@ class BaseController
     {
         $response = new Response();
         $data['message'] = $message;
+
         return $response->send($code, $data);
     }
 }

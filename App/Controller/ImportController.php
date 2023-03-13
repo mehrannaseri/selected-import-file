@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Core\Application;
 use App\Core\Request;
 use App\Services\FileImporter;
 
@@ -18,5 +19,7 @@ class ImportController extends BaseController
     public function store(Request $request)
     {
         $result = $this->service->handle($request->body->file);
+
+        return $this->response(201, "Data imported successfully");
     }
 }
