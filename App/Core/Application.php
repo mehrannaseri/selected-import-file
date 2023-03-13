@@ -31,7 +31,7 @@ class Application
             echo $this->router->resolve();
         }
         catch (\Exception $e){
-            echo $this->response->send(401, ['message' => 'Unauthorized']);
+            echo $this->response->send($e->getCode(), ['message' => $e->getMessage()]);
         }
 
     }
