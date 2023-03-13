@@ -6,5 +6,5 @@ use App\Core\Model;
 
 class Catalog extends Model
 {
-
+    public $table = 'catalogs';
 }
