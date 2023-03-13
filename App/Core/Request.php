@@ -48,6 +48,9 @@ class Request
             foreach ($_POST as $key => $value){
                 $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
+            foreach ($_FILES as $key => $value){
+                $body[$key] = $value;
+            }
         }
 
         return $body;

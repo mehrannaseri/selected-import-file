@@ -44,9 +44,9 @@ class Router
             $controller->action = $callback[1];
             $callback[0] = $controller;
 
-            foreach ($controller->getMiddlewares() as $middleware){
-                $middleware->execute();
-            }
+//            foreach ($controller->getMiddlewares() as $middleware){
+//                $middleware->execute();
+//            }
         }
 
         return call_user_func($callback, $this->request);

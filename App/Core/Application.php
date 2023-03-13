@@ -11,7 +11,6 @@ class Application
     public static string $ROOT_DIR;
     public static array $CONFIG;
     public Database $db;
-    public JwtToken $jwt;
     public $auth = null;
     public $controller = null;
 
@@ -24,7 +23,6 @@ class Application
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);
         $this->db = new Database($config['db']);
-        $this->jwt = new JwtToken($config['jwt']);
     }
 
     public function run()
@@ -36,11 +34,6 @@ class Application
             echo $this->response->send(401, ['message' => 'Unauthorized']);
         }
 
-    }
-
-    public static function auth()
-    {
-        return (new self(self::$ROOT_DIR, self::$CONFIG))->jwt->authorize();
     }
 
     public static function url(){
