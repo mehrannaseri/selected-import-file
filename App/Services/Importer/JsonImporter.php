@@ -9,7 +9,7 @@ use App\Models\ItemWarehouse;
 use App\Models\Warehouse;
 use Exception;
 
-class JsonImporter implements ImporterInterface
+class JsonImporter extends DataSlicer implements ImporterInterface
 {
     private $file;
     public Category $category_model;
@@ -41,9 +41,11 @@ class JsonImporter implements ImporterInterface
     }
 
 
-    public function saveData(array $fileData)
+    public function saveData(array $file_data)
     {
-        foreach ($fileData as $data){
+        $sliced_data = $this->getSliceData($file_data);
+
+        foreach ($sliced_data as $data){
 
             $category_id = $this->category_model->insertIfNotExists([
                 'category_id' => $data->Category_ID,

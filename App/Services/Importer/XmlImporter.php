@@ -2,7 +2,7 @@
 
 namespace App\Services\Importer;
 
-class XmlImporter implements ImporterInterface
+class XmlImporter extends DataSlicer implements ImporterInterface
 {
 
     private $file;
@@ -12,4 +12,13 @@ class XmlImporter implements ImporterInterface
         $this->file = $file;
     }
 
+    public function readFile(): array|\Exception
+    {
+        // TODO: Implement readFile() method.
+    }
+
+    public function saveData(array $data)
+    {
+        // TODO: Implement saveData() method.
+    }
 }
