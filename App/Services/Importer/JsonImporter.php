@@ -11,11 +11,39 @@ use Exception;
 
 class JsonImporter extends DataSlicer implements ImporterInterface
 {
+    /**
+     * @var array
+     */
     private $file;
+
+
+    /**
+     * @var Category
+     */
     public Category $category_model;
+
+
+    /**
+     * @var Catalog
+     */
     public Catalog $catalog_model;
+
+
+    /**
+     * @var Item
+     */
     public Item $item_model;
+
+
+    /**
+     * @var Warehouse
+     */
     public Warehouse $warehouse_model;
+
+
+    /**
+     * @var ItemWarehouse
+     */
     public ItemWarehouse $itemWarehouse_model;
 
     public function __construct($file)
@@ -28,6 +56,10 @@ class JsonImporter extends DataSlicer implements ImporterInterface
         $this->itemWarehouse_model = new ItemWarehouse();
     }
 
+    /**
+     * @return array|Exception
+     * @throws Exception
+     */
     public function readFile() :array|Exception
     {
         $file_content = file_get_contents($this->file['tmp_name']);
@@ -41,7 +73,11 @@ class JsonImporter extends DataSlicer implements ImporterInterface
     }
 
 
-    public function saveData(array $file_data)
+    /**
+     * @param array $file_data
+     * @return bool
+     */
+    public function saveData(array $file_data):bool
     {
         $sliced_data = $this->getSliceData($file_data);
 

@@ -9,6 +9,9 @@ use App\Services\FileImporter;
 class ImportController extends BaseController
 {
 
+    /**
+     * @var FileImporter
+     */
     private FileImporter $service;
 
     public function __construct()
@@ -16,9 +19,13 @@ class ImportController extends BaseController
         $this->service = new FileImporter();
     }
 
+    /**
+     * @param Request $request
+     * @return false|string
+     */
     public function store(Request $request)
     {
-        $result = $this->service->handle($request->body->file);
+        $this->service->handle($request->body->file);
 
         return $this->response(201, "Data imported successfully");
     }

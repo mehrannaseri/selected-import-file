@@ -16,6 +16,11 @@ class FileImporter
         $importer->saveData($data);
     }
 
+    /**
+     * @param $file
+     * @return ImporterInterface|Exception
+     * @throws Exception
+     */
     public function getImporter($file) :ImporterInterface | Exception
     {
         switch ($file['type']){

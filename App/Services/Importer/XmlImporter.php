@@ -17,7 +17,7 @@ class XmlImporter extends DataSlicer implements ImporterInterface
         // TODO: Implement readFile() method.
     }
 
-    public function saveData(array $data)
+    public function saveData(array $data) :bool
     {
         // TODO: Implement saveData() method.
     }
